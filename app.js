@@ -23,11 +23,11 @@ window.onload = function(e){
      * @return string
      */
     const generateHTML = pokemons =>
-        pokemons.reduce((accumulator, { name, id, types }) => {
+        pokemons.reduce((accumulator, { name, id, types, sprites }) => {
             const elementTypes = types.map(typeInfo => typeInfo.type.name)
 
             accumulator += `<li class="card ${elementTypes[0]}">
-                <img class="card-image" alt="${name}" src="https://pokeres.bastionbot.org/images/pokemon/${id}.png">
+                <img class="card-image" alt="${name}" src="${sprites.front_default}">
                 <h2 class="card-title">${id}. ${name}</h2>
                 <p class="card-subtitle">${elementTypes.join(' | ')}</p>
             </li>`;
