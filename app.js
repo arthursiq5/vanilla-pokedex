@@ -25,9 +25,13 @@ window.onload = function(e){
     const generateHTML = pokemons =>
         pokemons.reduce((accumulator, { name, id, types, sprites }) => {
             const elementTypes = types.map(typeInfo => typeInfo.type.name)
+            let sprite = sprites.front_shiny
+            if (sprite === '' || sprite === null) {
+                sprite = sprites.front_default
+            }
 
             accumulator += `<li class="card ${elementTypes[0]}">
-                <img class="card-image" alt="${name}" src="${sprites.front_default}">
+                <img class="card-image" alt="${name}" data-asset="${sprites.front_shiny}" src="${sprites.front_shiny}">
                 <h2 class="card-title">${id}. ${name}</h2>
                 <p class="card-subtitle">${elementTypes.join(' | ')}</p>
             </li>`;
